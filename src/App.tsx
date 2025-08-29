@@ -1,11 +1,14 @@
 import { GlobalStyle } from './globalStyles'
+import { BrowserRouter } from 'react-router-dom'
+
+import PageRoutes from './routes'
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <GlobalStyle />
-      <h1>Olá Mundo</h1>
-    </>
+      <PageRoutes />
+    </BrowserRouter>
   )
 }
 
