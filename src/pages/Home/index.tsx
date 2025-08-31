@@ -1,8 +1,8 @@
 import Header from '../../components/Header'
 import MainLayout from '../../components/MainLayout'
 
-import sushi from '../../assets/images/sushi.png'
 import { HomeContainer } from './styles'
+import CardRestaurants from '../../components/CardRestaurants'
 
 const Home = () => (
   <>
@@ -10,22 +10,22 @@ const Home = () => (
       <div className="container">
         <HomeContainer>
           <li>
-            <img src={sushi} />
+            <CardRestaurants />
           </li>
           <li>
-            <img src={sushi} />
+            <CardRestaurants />
           </li>
           <li>
-            <img src={sushi} />
+            <CardRestaurants />
           </li>
           <li>
-            <img src={sushi} />
+            <CardRestaurants />
           </li>
           <li>
-            <img src={sushi} />
+            <CardRestaurants />
           </li>
           <li>
-            <img src={sushi} />
+            <CardRestaurants />
           </li>
         </HomeContainer>
       </div>

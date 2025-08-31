@@ -42,6 +42,7 @@ export const GlobalStyle = createGlobalStyle`
 
   &:hover {
     filter: brightness(0.8);
+    transition: ease 0.2s;
   }
 }
 `

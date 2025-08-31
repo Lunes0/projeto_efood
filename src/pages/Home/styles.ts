@@ -7,11 +7,4 @@ export const HomeContainer = styled.ul`
   column-gap: 5rem;
   margin-top: 5rem;
   margin-bottom: 8rem;
-
-  li {
-    img {
-      width: 30rem;
-      object-fit: cover;
-    }
-  }
 `

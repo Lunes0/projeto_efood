@@ -14,6 +14,7 @@ export const FooterContainer = styled.footer`
   ul {
     display: flex;
     justify-content: center;
+    margin-left: 0.8rem;
 
     li {
       margin-right: 0.5rem;
