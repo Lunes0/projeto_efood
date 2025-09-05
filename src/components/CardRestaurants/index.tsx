@@ -1,36 +1,41 @@
-import { Banner, Button, Card, Infos, TagsContainer } from './styles'
-
-import sushi from '../../assets/images/sushi.png'
-import Star from '../../assets/icons/star'
 import { useNavigate } from 'react-router-dom'
 
-const CardRestaurants = () => {
+import type { Restaurants } from '../../pages/Home/index'
+
+import { Banner, Button, Card, Infos, TagsContainer } from './styles'
+import Star from '../../assets/icons/star'
+
+type Props = {
+  restaurants: Restaurants[]
+}
+
+const CardRestaurants = ({ restaurants }: Props) => {
   const navigate = useNavigate()
 
   return (
-    <Card>
-      <Banner>
-        <img src={sushi} alt="" />
-        <TagsContainer>
-          <h4>Destaque da semana</h4>
-          <h4>Japonesa</h4>
-        </TagsContainer>
-      </Banner>
-      <Infos>
-        <div>
-          <h3>Hioki Sushi</h3>
-          <p>
-            4.9 <Star />
-          </p>
-        </div>
-        <p>
-          Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis frescos, sashimis
-          deliciosos e pratos quentes irresistíveis. Entrega rápida, embalagens cuidadosas e
-          qualidade garantida. Experimente o Japão sem sair do lar com nosso delivery!
-        </p>
-        <Button onClick={() => navigate('/restaurant')}>Saiba Mais</Button>
-      </Infos>
-    </Card>
+    <>
+      {restaurants.map((restaurant) => (
+        <Card key={restaurant.id}>
+          <Banner>
+            <img src={restaurant.capa} alt={restaurant.titulo} />
+            <TagsContainer>
+              {restaurant.destacado && <h4>Destaque da semana</h4>}
+              <h4>{restaurant.tipo}</h4>
+            </TagsContainer>
+          </Banner>
+          <Infos>
+            <div>
+              <h3>{restaurant.titulo}</h3>
+              <p>
+                {restaurant.avaliacao} <Star />
+              </p>
+            </div>
+            <p>{restaurant.descricao}</p>
+            <Button onClick={() => navigate(`/restaurant/${restaurant.id}`)}>Saiba Mais</Button>
+          </Infos>
+        </Card>
+      ))}
+    </>
   )
 }
 

@@ -74,6 +74,10 @@ export const RestaurantBanner = styled.div`
   background-size: cover;
   background-position: center;
 
+  .overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+
   .category {
     font-size: 2rem;
     font-weight: 100;

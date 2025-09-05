@@ -8,9 +8,11 @@ import Cart from '../../assets/icons/basket'
 type Props = {
   type: 'home' | 'restaurant'
   restaurantImage?: string
+  category?: string
+  name?: string
 }
 
-const Header = ({ type, restaurantImage }: Props) => {
+const Header = ({ type, restaurantImage, category, name }: Props) => {
   const navigate = useNavigate()
 
   return (
@@ -38,9 +40,11 @@ const Header = ({ type, restaurantImage }: Props) => {
             </h3>
           </CartHeader>
           <RestaurantBanner style={{ backgroundImage: `url(${restaurantImage})` }}>
-            <div className="container">
-              <h2 className="category">Estilo</h2>
-              <h2 className="title">Nome Restaurante</h2>
+            <div className="overlay">
+              <div className="container">
+                <h2 className="category">{category}</h2>
+                <h2 className="title">{name}</h2>
+              </div>
             </div>
           </RestaurantBanner>
         </HeaderRestaurant>

@@ -1,17 +1,24 @@
-import pasta from '../../assets/images/pasta.png'
+import { localePrice } from '../../utils'
 
 import { ButtonDishes, Card } from './styles'
 
-const CardDishes = () => {
+type Props = {
+  onAddToCart?: () => void
+  name: string
+  description: string
+  price: number
+  image: string
+}
+
+const CardDishes = ({ onAddToCart, description, name, price, image }: Props) => {
   return (
     <Card>
-      <img src={pasta} alt="" />
-      <h3>Nome do Prato</h3>
-      <p>
-        A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e
-        um toque de azeite. Sabor e simplicidade!
-      </p>
-      <ButtonDishes>Adicionar ao carrinho</ButtonDishes>
+      <img src={image} alt={name} />
+      <h3>{name}</h3>
+      <p>{description}</p>
+      <ButtonDishes onClick={onAddToCart}>
+        Adicionar ao carrinho - {localePrice(price)}
+      </ButtonDishes>
     </Card>
   )
 }
