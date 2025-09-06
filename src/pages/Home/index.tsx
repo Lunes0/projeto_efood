@@ -1,10 +1,9 @@
-import { useEffect, useState } from 'react'
-
 import Header from '../../components/Header'
 import MainLayout from '../../components/MainLayout'
 import CardRestaurants from '../../components/CardRestaurants'
 
 import { HomeContainer } from './styles'
+import { useGetRestaurantsQuery } from '../../services/api'
 
 export type Restaurants = {
   id: number
@@ -24,26 +23,31 @@ export type Restaurants = {
   }[]
 }
 
+export type Dish = {
+  nome: string
+  descricao: string
+  preco: number
+  foto: string
+  porcao: string
+}
+
 const Home = () => {
-  const [restaurants, setRestaurants] = useState<Restaurants[]>([])
+  const { data: restaurants } = useGetRestaurantsQuery()
 
-  useEffect(() => {
-    fetch('https://ebac-fake-api.vercel.app/api/efood/restaurantes')
-      .then((res) => res.json())
-      .then((res) => setRestaurants(res))
-  }, [])
-
-  return (
-    <>
-      <MainLayout header={<Header type="home" />}>
-        <div className="container">
-          <HomeContainer>
-            <CardRestaurants restaurants={restaurants} />
-          </HomeContainer>
-        </div>
-      </MainLayout>
-    </>
-  )
+  if (restaurants) {
+    return (
+      <>
+        <MainLayout header={<Header type="home" />}>
+          <div className="container">
+            <HomeContainer>
+              <CardRestaurants restaurants={restaurants} />
+            </HomeContainer>
+          </div>
+        </MainLayout>
+      </>
+    )
+  }
+  return <h4>Carregando...</h4>
 }
 
 export default Home

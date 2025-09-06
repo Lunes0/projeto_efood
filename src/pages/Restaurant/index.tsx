@@ -1,13 +1,13 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 import Header from '../../components/Header'
 import MainLayout from '../../components/MainLayout'
 import CardDishes from '../../components/CardDishes'
 import Modal from '../../components/Modal'
-import type { Restaurants } from '../../pages/Home/index'
 
 import { DishesContainer } from './styles'
+import { useGetRestaurantQuery } from '../../services/api'
 
 type Dish = {
   nome: string
@@ -20,7 +20,6 @@ type Dish = {
 const Restaurant = () => {
   const { id } = useParams()
   const [modalOpen, setModalOpen] = useState(false)
-  const [restaurant, setRestaurant] = useState<Restaurants>()
   const [selectedDish, setSelectedDish] = useState<null | Dish>(null)
 
   const openModal = (dish: Dish) => {
@@ -29,11 +28,7 @@ const Restaurant = () => {
   }
   const closeModal = () => setModalOpen(false)
 
-  useEffect(() => {
-    fetch(`https://ebac-fake-api.vercel.app/api/efood/restaurantes/${id}`)
-      .then((res) => res.json())
-      .then((res) => setRestaurant(res))
-  }, [id])
+  const { data: restaurant } = useGetRestaurantQuery(id!)
 
   if (!restaurant) {
     return <h3>Carregando...</h3>

@@ -1,9 +1,11 @@
-import { ButtonDishes } from '../CardDishes/styles'
+import { useDispatch } from 'react-redux'
 
+import { add, open } from '../../store/reducers/cart'
 import { localePrice } from '../../utils'
 
 import close from '../../assets/images/close.png'
 import { ModalContainer, ModalContent } from './styles'
+import { ButtonDishes } from '../CardDishes/styles'
 
 type Props = {
   onClose: () => void
@@ -17,6 +19,14 @@ type Props = {
 }
 
 const Modal = ({ onClose, dish }: Props) => {
+  const dispatch = useDispatch()
+
+  const addToCart = () => {
+    dispatch(add(dish))
+    dispatch(open())
+    onClose()
+  }
+
   const handleContentClick = (e: React.MouseEvent) => {
     e.stopPropagation()
   }
@@ -29,7 +39,9 @@ const Modal = ({ onClose, dish }: Props) => {
           <h3>{dish.nome}</h3>
           <p>{dish.descricao}</p>
           <span>Serve: {dish.porcao}</span>
-          <ButtonDishes>Adicionar ao carrinho - {localePrice(dish.preco)}</ButtonDishes>
+          <ButtonDishes onClick={addToCart}>
+            Adicionar ao carrinho - {localePrice(dish.preco)}
+          </ButtonDishes>
         </div>
         <img className="close" src={close} alt="Fechar" onClick={onClose} />
       </ModalContent>

@@ -1,9 +1,14 @@
 import { useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+
+import { open } from '../../store/reducers/cart'
+import type { RootReducer } from '../../store'
 
 import background from '../../assets/images/background.png'
 import { BackLink, CartHeader, HeaderHome, HeaderRestaurant, RestaurantBanner } from './styles'
 import Logo from '../../assets/icons/logo'
-import Cart from '../../assets/icons/basket'
+import CartIcon from '../../assets/icons/basket'
+import Cart from '../Sidebar/Cart'
 
 type Props = {
   type: 'home' | 'restaurant'
@@ -14,6 +19,15 @@ type Props = {
 
 const Header = ({ type, restaurantImage, category, name }: Props) => {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
+
+  const { items } = useSelector((state: RootReducer) => state.cart)
+
+  const openCart = () => {
+    dispatch(open())
+  }
+
+  const totalQuantity = items.reduce((acc, item) => acc + item.quantity, 0)
 
   return (
     <>
@@ -29,14 +43,15 @@ const Header = ({ type, restaurantImage, category, name }: Props) => {
       )}
       {type === 'restaurant' && (
         <HeaderRestaurant style={{ backgroundImage: `url(${background})` }}>
+          <Cart />
           <CartHeader className="container">
             <BackLink onClick={() => navigate('/')}>Restaurantes</BackLink>
             <span className="logo-center">
               <Logo />
             </span>
-            <h3>
-              0 produtos no carrinho
-              <Cart />
+            <h3 onClick={openCart}>
+              {totalQuantity} produtos no carrinho
+              <CartIcon />
             </h3>
           </CartHeader>
           <RestaurantBanner style={{ backgroundImage: `url(${restaurantImage})` }}>

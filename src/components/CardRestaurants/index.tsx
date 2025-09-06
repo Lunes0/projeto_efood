@@ -26,9 +26,9 @@ const CardRestaurants = ({ restaurants }: Props) => {
           <Infos>
             <div>
               <h3>{restaurant.titulo}</h3>
-              <p>
+              <span>
                 {restaurant.avaliacao} <Star />
-              </p>
+              </span>
             </div>
             <p>{restaurant.descricao}</p>
             <Button onClick={() => navigate(`/restaurant/${restaurant.id}`)}>Saiba Mais</Button>
