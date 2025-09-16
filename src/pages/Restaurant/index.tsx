@@ -13,7 +13,7 @@ import { DishesContainer } from './styles'
 type Dish = {
   nome: string
   descricao: string
-  preco: number
+  preco: string
   foto: string
   porcao: string
 }

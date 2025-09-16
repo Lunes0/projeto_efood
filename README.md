@@ -18,6 +18,12 @@ Por enquanto o foco é **layout e navegação**, mas já estruturada para evolui
 
 ---
 
+## 👉 Demo
+
+- projeto-efood-git-parte-4-lunes-projects.vercel.app
+
+---
+
 ## 📦 Pré-requisitos
 
 - [Node.js](https://nodejs.org/) **>= 18**
@@ -29,7 +35,7 @@ Por enquanto o foco é **layout e navegação**, mas já estruturada para evolui
 
 ### Clone o repositório:
 
-- git clone https://github.com/seu-usuario/efood.git
+- git clone https://github.com/Lunes0/projeto_efood/tree/Parte-4
 
 - cd efood
 

@@ -6,7 +6,7 @@ type Props = {
   onAddToCart?: () => void
   name: string
   description: string
-  price: number
+  price: string
   image: string
 }
 
@@ -17,7 +17,7 @@ const CardDishes = ({ onAddToCart, description, name, price, image }: Props) => 
       <h3>{name}</h3>
       <p>{description}</p>
       <ButtonDishes onClick={onAddToCart}>
-        Adicionar ao carrinho - {localePrice(price)}
+        Adicionar ao carrinho - {localePrice(Number(price))}
       </ButtonDishes>
     </Card>
   )

@@ -13,7 +13,7 @@ type Props = {
   dish: {
     nome: string
     descricao: string
-    preco: number
+    preco: string
     foto: string
     porcao: string
   }
@@ -41,7 +41,7 @@ const Modal = ({ onClose, dish }: Props) => {
           <p>{dish.descricao}</p>
           <span>Serve: {dish.porcao}</span>
           <ButtonDishes onClick={addToCart}>
-            Adicionar ao carrinho - {localePrice(dish.preco)}
+            Adicionar ao carrinho - {localePrice(Number(dish.preco))}
           </ButtonDishes>
         </div>
         <img className="close" src={close} alt="Fechar" onClick={onClose} />
