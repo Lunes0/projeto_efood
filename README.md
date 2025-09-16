@@ -20,7 +20,7 @@ Por enquanto o foco é **layout e navegação**, mas já estruturada para evolui
 
 ## 👉 Demo
 
-- projeto-efood-git-parte-4-lunes-projects.vercel.app
+- [projeto-efood-git-parte-4-lunes-projects.vercel.app](https://projeto-efood-l2mljzxp3-lunes-projects.vercel.app/)
 
 ---
 
