@@ -1,6 +1,8 @@
 import styled from 'styled-components'
-import { colors } from '../../globalStyles'
+
 import { ButtonDishes } from '../CardDishes/styles'
+
+import { colors } from '../../globalStyles'
 
 export const ModalContainer = styled.div`
   position: fixed;

@@ -8,6 +8,9 @@ export const Card = styled.div`
   background-color: ${colors.primary};
   color: ${colors.orangishWhite};
   padding: 0.5rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 
   img {
     width: 100%;
@@ -32,4 +35,5 @@ export const ButtonDishes = styled(Button)`
   color: ${colors.primary};
   width: 100%;
   text-align: center;
+  margin-top: auto;
 `

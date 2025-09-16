@@ -2,6 +2,7 @@ import Facebook from '../../assets/icons/facebook'
 import Instagram from '../../assets/icons/instagram'
 import Logo from '../../assets/icons/logo'
 import Twitter from '../../assets/icons/twitter'
+
 import { FooterContainer } from './styles'
 
 const Footer = () => (

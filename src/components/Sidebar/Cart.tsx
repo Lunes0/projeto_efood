@@ -1,52 +1,48 @@
 import { useDispatch, useSelector } from 'react-redux'
 
-import { close, remove } from '../../store/reducers/cart'
+import { remove, checkoutOpen } from '../../store/reducers/sidebar'
 import type { RootReducer } from '../../store'
+import { getTotalPrice, localePrice } from '../../utils'
 
-import { Sidebar, Overlay, CartContainer, CartItem, TotalPrice } from './styles'
 import { ButtonDishes } from '../CardDishes/styles'
-import { localePrice } from '../../utils'
+
+import * as S from './styles'
 
 const Cart = () => {
   const dispatch = useDispatch()
-  const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
-
-  const closeCart = () => {
-    dispatch(close())
-  }
+  const { items } = useSelector((state: RootReducer) => state.cart)
 
   const removeItem = (name: string) => {
     dispatch(remove(name))
   }
 
-  const getTotalPrice = () => {
-    return items.reduce((acc, crr) => acc + crr.dish.preco * crr.quantity, 0)
+  const goToCheckout = () => {
+    dispatch(checkoutOpen())
   }
 
   return (
-    <CartContainer className={isOpen ? 'is-open' : ''}>
-      <Overlay onClick={closeCart} />
-      <Sidebar>
-        <ul>
-          {items.map((item) => (
-            <CartItem key={item.dish.nome}>
-              <img src={item.dish.foto} alt={item.dish.nome} />
-              <div>
-                <h3>{item.dish.nome}</h3>
-                <span>{localePrice(item.dish.preco)}</span>
-                <span className="item-qnt">Quantidade: {item.quantity}</span>
-              </div>
-              <button onClick={() => removeItem(item.dish.nome)} />
-            </CartItem>
-          ))}
-        </ul>
-        <TotalPrice>
-          <span>Valor total:</span>
-          <span>{localePrice(getTotalPrice())}</span>
-        </TotalPrice>
-        <ButtonDishes>Continuar com a entrega</ButtonDishes>
-      </Sidebar>
-    </CartContainer>
+    <S.Sidebar>
+      <ul>
+        {items.map((item) => (
+          <S.CartItem key={item.dish.nome}>
+            <img src={item.dish.foto} alt={item.dish.nome} />
+            <div>
+              <h3>{item.dish.nome}</h3>
+              <span>{localePrice(Number(item.dish.preco))}</span>
+              <span className="item-qnt">Quantidade: {item.quantity}</span>
+            </div>
+            <button onClick={() => removeItem(item.dish.nome)} />
+          </S.CartItem>
+        ))}
+      </ul>
+      <S.TotalPrice>
+        <span>Valor total:</span>
+        <span>{localePrice(getTotalPrice(items))}</span>
+      </S.TotalPrice>
+      <ButtonDishes disabled={items.length === 0} onClick={goToCheckout}>
+        Continuar com a entrega
+      </ButtonDishes>
+    </S.Sidebar>
   )
 }
 

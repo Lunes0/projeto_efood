@@ -1,11 +1,12 @@
 import { useDispatch } from 'react-redux'
 
-import { add, open } from '../../store/reducers/cart'
+import { add, open } from '../../store/reducers/sidebar'
 import { localePrice } from '../../utils'
 
 import close from '../../assets/images/close.png'
-import { ModalContainer, ModalContent } from './styles'
 import { ButtonDishes } from '../CardDishes/styles'
+
+import { ModalContainer, ModalContent } from './styles'
 
 type Props = {
   onClose: () => void

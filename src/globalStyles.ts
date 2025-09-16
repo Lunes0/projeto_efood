@@ -45,4 +45,8 @@ export const GlobalStyle = createGlobalStyle`
       transition: ease 0.2s;
     }
   }
+
+  .display-none {
+    display: none;
+  }
 `

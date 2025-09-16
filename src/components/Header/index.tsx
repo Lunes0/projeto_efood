@@ -1,14 +1,16 @@
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { open } from '../../store/reducers/cart'
+import { open, clear } from '../../store/reducers/sidebar'
 import type { RootReducer } from '../../store'
 
+import Checkout from '../../pages/Checkout'
+
 import background from '../../assets/images/background.png'
-import { BackLink, CartHeader, HeaderHome, HeaderRestaurant, RestaurantBanner } from './styles'
 import Logo from '../../assets/icons/logo'
 import CartIcon from '../../assets/icons/basket'
-import Cart from '../Sidebar/Cart'
+
+import * as S from './styles'
 
 type Props = {
   type: 'home' | 'restaurant'
@@ -21,10 +23,15 @@ const Header = ({ type, restaurantImage, category, name }: Props) => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  const { items } = useSelector((state: RootReducer) => state.cart)
+  const { items, isOpen } = useSelector((state: RootReducer) => state.cart)
 
   const openCart = () => {
     dispatch(open())
+  }
+
+  const backToRestaurants = () => {
+    dispatch(clear())
+    navigate('/')
   }
 
   const totalQuantity = items.reduce((acc, item) => acc + item.quantity, 0)
@@ -32,20 +39,20 @@ const Header = ({ type, restaurantImage, category, name }: Props) => {
   return (
     <>
       {type === 'home' && (
-        <HeaderHome style={{ backgroundImage: `url(${background})` }}>
+        <S.HeaderHome style={{ backgroundImage: `url(${background})` }}>
           <nav className="container">
             <div>
               <Logo />
               <h1>Viva experiências gastronômicas no conforto da sua casa</h1>
             </div>
           </nav>
-        </HeaderHome>
+        </S.HeaderHome>
       )}
       {type === 'restaurant' && (
-        <HeaderRestaurant style={{ backgroundImage: `url(${background})` }}>
-          <Cart />
-          <CartHeader className="container">
-            <BackLink onClick={() => navigate('/')}>Restaurantes</BackLink>
+        <S.HeaderRestaurant style={{ backgroundImage: `url(${background})` }}>
+          {isOpen ? <Checkout /> : ''}
+          <S.CartHeader className="container">
+            <S.BackLink onClick={backToRestaurants}>Restaurantes</S.BackLink>
             <span className="logo-center">
               <Logo />
             </span>
@@ -53,16 +60,16 @@ const Header = ({ type, restaurantImage, category, name }: Props) => {
               {totalQuantity} produtos no carrinho
               <CartIcon />
             </h3>
-          </CartHeader>
-          <RestaurantBanner style={{ backgroundImage: `url(${restaurantImage})` }}>
+          </S.CartHeader>
+          <S.RestaurantBanner style={{ backgroundImage: `url(${restaurantImage})` }}>
             <div className="overlay">
               <div className="container">
                 <h2 className="category">{category}</h2>
                 <h2 className="title">{name}</h2>
               </div>
             </div>
-          </RestaurantBanner>
-        </HeaderRestaurant>
+          </S.RestaurantBanner>
+        </S.HeaderRestaurant>
       )}
     </>
   )

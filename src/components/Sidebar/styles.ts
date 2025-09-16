@@ -1,5 +1,7 @@
 import { styled } from 'styled-components'
 
+import { ButtonDishes } from '../CardDishes/styles'
+
 import trash from '../../assets/images/trash.png'
 
 import { colors } from '../../globalStyles'
@@ -21,12 +23,8 @@ export const CartContainer = styled.div`
   height: 100%;
   width: 100%;
   z-index: 9;
-  display: none;
+  display: flex;
   justify-content: flex-end;
-
-  &.is-open {
-    display: flex;
-  }
 `
 
 export const Sidebar = styled.aside`
@@ -36,6 +34,23 @@ export const Sidebar = styled.aside`
   max-width: 22.5rem;
   width: 100%;
   font-size: 0.875rem;
+`
+
+export const SuccessMenssage = styled.div`
+  color: ${colors.orangishWhite};
+  z-index: 100;
+
+  h3 {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    padding-bottom: 1.5rem;
+    line-height: 1.375rem;
+    font-size: 0.875rem;
+  }
 `
 
 export const CartItem = styled.li`
@@ -84,4 +99,62 @@ export const TotalPrice = styled.div`
   margin-bottom: 1rem;
   display: flex;
   justify-content: space-between;
+`
+
+export const InputGroup = styled.div`
+  flex: auto;
+  margin-bottom: 0.5rem;
+
+  label {
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  input {
+    background-color: ${colors.orangishWhite};
+    border: 1px solid ${colors.orangishWhite};
+    height: 2rem;
+    padding: 0 0.5rem;
+    width: 100%;
+
+    &.error {
+      border: 1px solid yellow;
+      color: black;
+      font-weight: bold;
+      background-color: rgba(200, 80, 80, 0.5);
+    }
+  }
+`
+
+export const DeliveryForm = styled.form`
+  font-weight: bold;
+  font-size: 0.875rem;
+  color: ${colors.orangishWhite};
+  display: flex;
+  flex-direction: column;
+
+  h3 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  div {
+    display: inline-block;
+  }
+
+  ${ButtonDishes} {
+    margin-bottom: 0.5rem;
+  }
+
+  .split-input {
+    display: flex;
+    justify-content: space-between;
+
+    ${InputGroup} {
+      max-width: 10rem;
+    }
+  }
+  .last-input {
+    margin-bottom: 1.5rem;
+  }
 `

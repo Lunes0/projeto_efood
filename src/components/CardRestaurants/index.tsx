@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom'
 
+import Star from '../../assets/icons/star'
 import type { Restaurants } from '../../pages/Home/index'
 
-import { Banner, Button, Card, Infos, TagsContainer } from './styles'
-import Star from '../../assets/icons/star'
+import * as S from './styles'
 
 type Props = {
   restaurants: Restaurants[]
@@ -15,15 +15,15 @@ const CardRestaurants = ({ restaurants }: Props) => {
   return (
     <>
       {restaurants.map((restaurant) => (
-        <Card key={restaurant.id}>
-          <Banner>
+        <S.Card key={restaurant.id}>
+          <S.Banner>
             <img src={restaurant.capa} alt={restaurant.titulo} />
-            <TagsContainer>
+            <S.TagsContainer>
               {restaurant.destacado && <h4>Destaque da semana</h4>}
               <h4>{restaurant.tipo}</h4>
-            </TagsContainer>
-          </Banner>
-          <Infos>
+            </S.TagsContainer>
+          </S.Banner>
+          <S.Infos>
             <div>
               <h3>{restaurant.titulo}</h3>
               <span>
@@ -31,9 +31,9 @@ const CardRestaurants = ({ restaurants }: Props) => {
               </span>
             </div>
             <p>{restaurant.descricao}</p>
-            <Button onClick={() => navigate(`/restaurant/${restaurant.id}`)}>Saiba Mais</Button>
-          </Infos>
-        </Card>
+            <S.Button onClick={() => navigate(`/restaurant/${restaurant.id}`)}>Saiba Mais</S.Button>
+          </S.Infos>
+        </S.Card>
       ))}
     </>
   )

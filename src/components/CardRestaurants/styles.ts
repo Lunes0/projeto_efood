@@ -1,8 +1,12 @@
 import styled from 'styled-components'
+
 import { colors } from '../../globalStyles'
 
 export const Card = styled.li`
   width: 30rem;
+  max-height: 25rem;
+  display: flex;
+  flex-direction: column;
 `
 
 export const Banner = styled.div`
@@ -40,6 +44,9 @@ export const Infos = styled.div`
   border: 1px solid ${colors.primary};
   border-top: none;
   padding: 0.5rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 
   div {
     font-weight: bold;
@@ -68,6 +75,8 @@ export const Button = styled.button`
   cursor: pointer;
   padding: 0.25rem 0.325rem;
   font-weight: bold;
+  margin-top: auto;
+  align-self: flex-start;
 
   &:hover {
     filter: brightness(0.9);

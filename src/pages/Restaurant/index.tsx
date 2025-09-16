@@ -6,8 +6,9 @@ import MainLayout from '../../components/MainLayout'
 import CardDishes from '../../components/CardDishes'
 import Modal from '../../components/Modal'
 
-import { DishesContainer } from './styles'
 import { useGetRestaurantQuery } from '../../services/api'
+
+import { DishesContainer } from './styles'
 
 type Dish = {
   nome: string

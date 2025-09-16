@@ -6,14 +6,16 @@ type CartItem = {
   quantity: number
 }
 
-type CartState = {
+type SidebarState = {
   items: CartItem[]
   isOpen: boolean
+  checkout: boolean
 }
 
-const initialState: CartState = {
+const initialState: SidebarState = {
   items: [],
-  isOpen: false
+  isOpen: false,
+  checkout: false
 }
 
 const cartSlice = createSlice({
@@ -43,9 +45,18 @@ const cartSlice = createSlice({
     },
     close: (state) => {
       state.isOpen = false
+    },
+    clear: (state) => {
+      state.items = []
+    },
+    checkoutOpen: (state) => {
+      state.checkout = true
+    },
+    checkoutClose: (state) => {
+      state.checkout = false
     }
   }
 })
 
-export const { add, remove, close, open } = cartSlice.actions
+export const { add, remove, close, open, clear, checkoutClose, checkoutOpen } = cartSlice.actions
 export default cartSlice.reducer

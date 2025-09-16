@@ -2,8 +2,9 @@ import Header from '../../components/Header'
 import MainLayout from '../../components/MainLayout'
 import CardRestaurants from '../../components/CardRestaurants'
 
-import { HomeContainer } from './styles'
 import { useGetRestaurantsQuery } from '../../services/api'
+
+import { HomeContainer } from './styles'
 
 export type Restaurants = {
   id: number
@@ -26,7 +27,7 @@ export type Restaurants = {
 export type Dish = {
   nome: string
   descricao: string
-  preco: number
+  preco: string
   foto: string
   porcao: string
 }
