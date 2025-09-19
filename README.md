@@ -13,7 +13,6 @@ Por enquanto o foco é **layout e navegação**, mas já estruturada para evolui
 - **[React Router DOM](https://reactrouter.com/)** para navegação entre páginas
 - **[styled-components](https://styled-components.com/)** para estilização com CSS-in-JS
 - **[Formik](https://formik.org/)** + **[Yup](https://github.com/jquense/yup)** para formulários e validação
-- **[Jest](https://jestjs.io/)** e **[Cypress](https://www.cypress.io/)** para testes
 - **[ESLint](https://eslint.org/)** + **[Prettier](https://prettier.io/)** para lint e formatação
 
 ---
