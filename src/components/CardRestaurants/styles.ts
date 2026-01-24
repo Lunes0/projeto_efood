@@ -1,9 +1,12 @@
 import styled from 'styled-components'
+
 import { colors } from '../../globalStyles'
 
 export const Card = styled.li`
-  background-color: ${colors.white};
   width: 30rem;
+  max-height: 25rem;
+  display: flex;
+  flex-direction: column;
 `
 
 export const Banner = styled.div`
@@ -36,19 +39,23 @@ export const TagsContainer = styled.div`
 
 export const Infos = styled.div`
   font-size: 0.875rem;
+  background-color: ${colors.white};
   color: ${colors.primary};
   border: 1px solid ${colors.primary};
   border-top: none;
+  padding: 0.5rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 
   div {
-    padding: 0.5rem;
     font-weight: bold;
     font-size: 1.125rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    p {
+    span {
       display: flex;
       align-items: center;
       gap: 0.25rem;
@@ -57,7 +64,7 @@ export const Infos = styled.div`
 
   p {
     line-height: 1.375rem;
-    padding: 0 0.5rem 1rem;
+    margin: 1rem 0;
   }
 `
 
@@ -68,7 +75,8 @@ export const Button = styled.button`
   cursor: pointer;
   padding: 0.25rem 0.325rem;
   font-weight: bold;
-  margin: 0.5rem;
+  margin-top: auto;
+  align-self: flex-start;
 
   &:hover {
     filter: brightness(0.9);
