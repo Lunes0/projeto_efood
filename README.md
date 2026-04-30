@@ -17,10 +17,10 @@ Por enquanto o foco é **layout e navegação**, mas já estruturada para evolui
 
 ---
 
-## 👉 Demo
+## 👉 Deploy
 
-- [projeto-efood-git-parte-4-lunes-projects.vercel.app](https://projeto-efood-l2mljzxp3-lunes-projects.vercel.app/)
-
+- Link do Projeto[
+](https://projeto-efood-five-phi.vercel.app/)
 ---
 
 ## 📦 Pré-requisitos
@@ -34,9 +34,9 @@ Por enquanto o foco é **layout e navegação**, mas já estruturada para evolui
 
 ### Clone o repositório:
 
-- git clone https://github.com/Lunes0/projeto_efood/tree/Parte-4
+- git clone https://github.com/Lunes0/projeto_efood.git
 
-- cd efood
+- cd projeto_efood
 
 ### Instale as dependências:
 
